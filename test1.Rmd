@@ -1,0 +1,91 @@
+---
+title: "Untitled"
+author: "Md Mujahedul Islam"
+date: "22 February 2016"
+output: ioslides_presentation
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+```
+
+## R Markdown Exercise
+
+
+```{r mujahed}
+data(AirPassengers)
+data("swiss")
+mean(swiss$Examination)
+```
+
+
+## Histogram 
+
+```{r muja}
+hist(swiss$Examination,
+      main = 'Swiss Canton Draftee Examination Scores (1888)',
+      xlab = '% receiving highest mark on army exam')
+``` 
+
+## Mean
+```{r m}
+fun_mean <- function(x){
+  sum(x) / length(x)
+}
+fun_mean(x = swiss$Examination)
+```
+
+## Summary Statistics
+
+```{r muj}
+hist(swiss$Examination)
+
+values <- rnorm(1000, mean = 10)
+value_mean <- mean(values)
+round(value_mean, digits = 2)
+```
+
+```{r mu}
+for (i in 1:length(names(swiss))) {
+  swiss[, i] %>%
+    mean() %>%
+    round(digits = 1) %>%
+    paste(names(swiss)[i], ., '\n') %>% # the . directs the 
+    cat()
+}
+```
+## Summary Statistics
+```{r a}
+mean(swiss$Examination)
+mean(swiss$Examination, na.rm = TRUE)
+median(swiss$Examination)
+```
+## Histogram
+
+```{r aa}
+devtools::source_url('http://bit.ly/OTWEGS')
+plot(MortalityGDP$region, xlab = 'Region')
+
+range(swiss$Examination)
+summary(swiss$Examination)
+```
+
+## Dropbox Plots
+```{r aaa}
+boxplot(swiss$Examination, main = '% Draftees with Highest')
+var(swiss$Examination)
+sd(swiss$Examination)
+getwd()
+```
+
+## Including Plots
+
+Temparature and pressure relationship:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
